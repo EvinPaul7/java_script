@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Javascript Lab 1</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+	</style>
+</head>
+<body>
+<div>
+<form>
+<input type="text" id="fvalue" placeholder="Enter the 1st value"><br><br>
+<input type="text" id="svalue" placeholder="Enter the 2nd value"><br><br>
+<select id="calculator" name="calculator" onclick="calcValues()"><br>
+		<option value="add">Addition (+)</option>
+		<option value="sub">Subtraction (-)</option>
+		<option value="mult">Multiplication (*)</option>
+		<option value="div">Division (/)</option>
+</select><br><br>
+<input type="text" id="result"><br>
+</form>
+
+<script>
+function calcValues()
+{
+var fvalue = parseInt(document.getElementById("fvalue").value);
+var svalue = parseInt(document.getElementById("svalue").value);
+var calculator = document.getElementById("calculator").value;
+
+if(calculator==='add')
+ {
+  document.getElementById("result").value=fvalue+svalue;
+ } 
+
+if(calculator==='sub') 
+ {
+  document.getElementById("result").value=fvalue-svalue;
+ }
+
+if(calculator==='mult') 
+ {
+  document.getElementById("result").value=fvalue*svalue;
+ }
+
+if(calculator==='div') 
+ {
+  document.getElementById("result").value=fvalue/svalue;
+ }
+}
+</script>
+</body>
+</html>

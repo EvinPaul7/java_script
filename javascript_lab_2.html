@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    	*{
+    margin: 0;
+    padding: 0; 
+    font-family: 'Poppins', sans-serif;
+}
+.container-fluid{
+    width: 100%;
+    height:600px;
+    background: #141a34;
+    padding-top: 30px;
+}
+
+.container-fluid form{
+    width: 90%;
+    max-width: 500px;
+    padding: 50px 30px 20px;
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom:-5px ;
+    text-align: left;
+}
+.input-group{
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+}
+
+.input-group input{
+    border:  1px solid;
+    border-radius: 4px;
+    padding: 10px 0px;
+    color: #333;
+    font-size: 16px;
+    width: 400px;
+    margin-bottom: 10px;
+}
+::placeholder{
+    font-size: 17px;
+    padding-left: 15px;
+}
+
+form button{
+    background: #141a34;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid;
+    margin-left: 150px;
+    width: 100px;
+    height: 40px;
+}
+span{
+	color: red;
+	font-size: small;
+}
+    </style>
+</head>
+<body>
+  <div class="container-fluid">
+   <div class="row">
+   	<div class="col-3 col-sm-3"></div>
+   	<div class="col-6 col-sm-6">
+    <form>
+      <div class="input-group">
+        <label>Full name</label>
+            <input type="text" placeholder="Enter your name" id="contact-name" onkeyup="vName()"><span id="name-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Phone number</label>
+            <input type="tel" placeholder="123 456 7890" id="phone-number" onkeyup="vNumber()"><span id="phone-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Email Id</label>
+            <input type="email" placeholder="example@gmail.com" id="email-id" onkeyup="vEmail()"><span id="email-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+            <input type="password" placeholder="**********" id="password" onkeyup="vPassword()"><span id="password-error"></span>
+      </div>
+
+      <button>Submit</button>
+    </form>
+    </div>
+    <div class="col-3 col-sm-3" ></div>
+   </div> 
+  </div>
+
+  <script type="text/javascript">
+  	var nameError=document.getElementById("name-error");
+  	var phoneError=document.getElementById("phone-error");
+  	var emailError=document.getElementById("email-error");
+  	var passwordError=document.getElementById("password-error");
+  	var submitError=document.getElementById("submit-error");
+
+  	
+
+    function vName(){
+    var name=document.getElementById("contact-name").value;
+    if(name.length <=2){
+        nameError.innerHTML="Name is Required"
+        return false;
+    }
+    if(!name.match(/^[A-za-z]*$/)){
+        nameError.innerHTML="Numbers are not allowed";
+        return false;
+    }
+      nameError.innerHTML="valid";
+      return true;
+}
+    function vNumber(){ 
+    var phone=document.getElementById("phone-number").value;
+    if(phone.length!== 10){
+        phoneError.innerHTML="Phone no should be in 10 digits";
+        return false;
+    }
+    if(phone.length ==0 ){
+    	phoneError.innerHTML="Phone no is required";
+    }
+    if(!phone.match(/^[0-9]{10}$/)){
+        phoneError.innerHTML="Only digits";
+        return false;
+    }
+      phoneError.innerHTML="valid";
+      return true;
+}
+function vEmail(){ 
+    var email=document.getElementById("email-id").value;
+    if(email.length ==0 ){
+    	emailError.innerHTML="Email id is required";
+    	return false;
+    }
+    if(!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
+        emailError.innerHTML="Email id should be in proper format";
+        return false;
+    }
+      emailError.innerHTML="valid";
+      return true;
+}
+function vPassword(){ 
+    var password=document.getElementById("email-id").value;
+    if(password.length <=6 ){
+    	passwordError.innerHTML="Email id is required";
+    	return false;
+    }
+      passwordError.innerHTML="valid";
+      return true;
+}
+</script>
+   
+</body>
+</html>
